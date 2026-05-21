@@ -12,6 +12,7 @@ import {
     Table2,
     Building2,
     ChevronRight,
+    UserPlus,
 } from "lucide-react";
 
 import { organisationData } from "../../data/leads";
@@ -22,7 +23,8 @@ const iconMap = {
     rocket: Rocket,
     list: ClipboardList,
     message: MessageSquare,
-    users: Users,
+    users: UserPlus,
+    users2: Users,
     speaker: Radio,
     globe: Globe,
     chat: MessageCircle,
@@ -38,9 +40,9 @@ const navItems = [
 ];
 
 const controlCenterItems = [
-    { label: "Team Members", icon: "users" },
+    { label: "Team Members", icon: "users2" },
     { label: "Lead Sources", icon: "speaker" },
-    { label: "Ad Accounts", icon: "globe" },
+    { label: "Ad Accounts", icon: "users" },
     { label: "WhatsApp Account", icon: "chat" },
     { label: "Tele Calling", icon: "phone" },
     { label: "CRM Fields", icon: "table" },
@@ -51,8 +53,8 @@ function NavItem({ item, onClick, isActive }) {
     return (
         <button
             onClick={() => onClick(item.label)}
-            className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-150 ${isActive
-                ? "bg-emerald-50 text-emerald-700"
+            className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-bold transition-colors duration-150 ${isActive
+                ? "bg-blue-100 text-emerald-700"
                 : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
                 }`}
         >
@@ -74,12 +76,12 @@ export default function Sidebar() {
                 <div className="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center">
                     <span className="text-white text-xs font-bold">G</span>
                 </div>
-                <span className="text-gray-900 font-semibold text-base tracking-tight">GrowEasy</span>
+                <span className="text-gray-900 font-semibold text-xl tracking-tight">GrowEasy</span>
             </div>
 
             {/* User */}
-            <div className="mb-6 pb-4 border-b border-gray-100 relative">
-                <div className="flex items-center gap-2 px-2 cursor-pointer hover:bg-gray-50 rounded-lg py-1 transition-colors"
+            <div className="mb-6  border border-slate-200 p-1 rounded-xl relative hover:bg-gray-50">
+                <div className="flex items-center gap-2 px-2 cursor-pointer  rounded-lg py-1 transition-colors"
                     onClick={() => setShowOrgMenu(!showOrgMenu)}
                 >
                     {orgList.slice(0, 1).map((item) => {
@@ -96,7 +98,7 @@ export default function Sidebar() {
                     <div className="flex-1 min-w-0">
                         {orgList.slice(0, 1).map((item) => (
                             <div key={item.name}>
-                                <p className="text-xs font-semibold text-gray-900 truncate">{item.name}</p>
+                                <p className="text-xs font-bold text-gray-900 truncate">{item.name}</p>
                                 <p className="text-[10px] text-gray-400 uppercase tracking-wider">{item.role}</p>
                             </div>
                         ))}
@@ -137,7 +139,7 @@ export default function Sidebar() {
 
             {/* Main Nav */}
             <div className="mb-6">
-                <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest px-2 mb-2">Main</p>
+                <p className="text-[12px] font-bold text-gray-400 uppercase tracking-widest px-2 mb-4">Main</p>
                 <nav className="flex flex-col gap-0.5">
                     {navItems.map((item) => (
                         <NavItem
@@ -152,7 +154,7 @@ export default function Sidebar() {
 
             {/* Control Center */}
             <div>
-                <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest px-2 mb-2">Control Center</p>
+                <p className="text-[11px] font-bold text-gray-400 uppercase tracking-widest px-2 mb-4">Control Center</p>
                 <nav className="flex flex-col gap-0.5">
                     {controlCenterItems.map((item) => (
                         <NavItem
@@ -167,7 +169,7 @@ export default function Sidebar() {
 
             {/* Bottom */}
             <div className="mt-auto pt-4 border-t border-gray-100">
-                <button className="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-500 hover:text-gray-800 hover:bg-gray-50 rounded-lg transition-colors">
+                <button className="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-500 hover:text-gray-800 hover:bg-gray-50 rounded-lg transition-colors font-bold">
                     <Building2 size={15} />
                     <span>Business Center</span>
                 </button>
