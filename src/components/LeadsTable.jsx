@@ -4,6 +4,7 @@ import { StatusBadge, QualityBadge } from "./Badges";
 import { leadsData } from "../../data/leads";
 import { OrgContext } from "../context/OrgContext";
 import { LeadDetailContext } from "../context/LeadDetailContext";
+import { useDebounce } from "../hooks/useDebounce";
 
 function LeadRow({ lead, onLeadClick }) {
     const realDate = new Date(lead.created_at._seconds * 1000).toLocaleString()
@@ -61,14 +62,16 @@ export default function LeadsTable() {
     const { selectedOrgId } = useContext(OrgContext);
     const { setSelectedLead, selectedLead } = useContext(LeadDetailContext);
 
+    const debouncedQuery = useDebounce(searchQuery, 300)
+
     const filtered = leadsData.filter((lead) => {
         // Filter by organization ID
         if (lead.org_id !== selectedOrgId) return false;
 
         // Filter by search query
-        if (!searchQuery) return true;
-        const q = searchQuery.toLowerCase();
-        console.log(q)
+        if (!debouncedQuery) return true;
+        const q = debouncedQuery.toLowerCase();
+        // console.log(q)
         return (
             lead?.email?.toLowerCase().includes(q) ||
             lead?.contact?.toLowerCase().includes(q)

@@ -7,6 +7,7 @@ const statusOptions = ["Not Dialed", "Dialed", "Converted", "Follow Up", "Not In
 const qualityOptions = ["Hot", "Warm", "Cold"];
 const sourceOptions = ["Facebook", "Instagram", "Google", "Organic", "Referral"];
 const ownerOptions = ["Me", "Team Member 1", "Team Member 2"];
+const dateOptions = ["Today", "Last 7 Days", "Last 30 Days", "Last 2 Months"]
 
 function DropdownFilter({ label, options }) {
     const [open, setOpen] = useState(false);
@@ -79,14 +80,14 @@ export default function FiltersBar({ activeFilter, onFilterChange, activeTags, o
 
             {/* Date range */}
             <div className="mt-4">
-                <p className="text-xs text-gray-700 mb-1 font-semibold">Created Date Range</p>
+                <p className="text-xs text-gray-500 mb-1 font-semibold">Created Date Range</p>
                 <div className="flex items-center gap-2">
                     <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-1.5 text-sm  w-100 justify-between">
                         <div className="flex items-center gap-3">
                             <Calendar size={13} className="text-gray-400" />
                             <span className="text-xs font-medium">19 Apr 2026 – 18 May 2026</span>
                         </div>
-                        <button className="ml-1 text-white  bg-green-800 rounded-xl p-1">
+                        <button className="ml-1 text-white  bg-emerald-800 rounded-xl p-1">
                             <X size={8} />
                         </button>
                     </div>
@@ -94,12 +95,12 @@ export default function FiltersBar({ activeFilter, onFilterChange, activeTags, o
 
                 {/* Quick date pills */}
                 <div className="flex items-center gap-2 mt-2">
-                    {["Today", "Last 7 Days", "Last 30 Days", "Last 2 Months"].map((range) => (
+                    {dateOptions.map((range) => (
                         <button
                             key={range}
                             onClick={() => onFilterChange(range)}
-                            className={`px-3 py-1 text-xs rounded-full border transition-colors font-medium ${activeFilter === range
-                                ? "bg-emerald-600 text-white border-emerald-600"
+                            className={`px-3 py-1 text-xs rounded-full border transition-colors font-bold ${activeFilter === range
+                                ? "border-emerald-500  text-emerald-800 bg-emerald-50"
                                 : "border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50"
                                 }`}
                         >
@@ -111,7 +112,7 @@ export default function FiltersBar({ activeFilter, onFilterChange, activeTags, o
             </div>
 
             <div className="flex flex-col mt-4 gap-2">
-                <button className="text-xs text-gray-400 hover:text-gray-600 flex items-center gap-1 border border-slate-100 w-fit py-1 px-2 rounded-xl">
+                <button className="text-xs text-gray-500 hover:text-gray-600 flex items-center gap-1 border border-slate-200 w-fit py-1 px-2 rounded-xl">
                     <X size={11} />
                     Clear Date
                 </button>

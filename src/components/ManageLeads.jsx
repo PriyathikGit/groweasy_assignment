@@ -4,6 +4,7 @@ import PerformanceOverview from "./PerformanceOverview";
 import LeadsTable from "./LeadsTable";
 import LeadDetailPanel from "./LeadDetailPanel";
 import { LeadDetailContext } from "../context/LeadDetailContext";
+import Header from "./Header";
 
 export default function ManageLeads() {
     const [activeFilter, setActiveFilter] = useState("Last 30 Days");
@@ -14,15 +15,9 @@ export default function ManageLeads() {
     const removeTag = (tag) => setActiveTags((prev) => prev.filter((t) => t !== tag));
 
     return (
-        <div className="flex flex-1">
+        <div className="flex flex-1 flex-col">
+            <Header />
             <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
-                {/* Page header */}
-                <div className="mb-6">
-                    <h1 className="text-xl font-bold text-gray-900">Manage Your Leads</h1>
-                    <p className="text-sm text-gray-500 mt-0.5">
-                        Monitor lead status, assign tasks, and close deals faster.
-                    </p>
-                </div>
 
                 {/* Filters */}
                 <FiltersBar
