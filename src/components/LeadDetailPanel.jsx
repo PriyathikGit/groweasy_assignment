@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { X, ChevronDown, Phone, Mail, MapPin, User, Briefcase, Clock, Pencil, BarChart3, Share, Share2Icon, Bot, MessageCircle, CircleCheck, Plus, Zap } from "lucide-react";
+import { X, ChevronDown, Phone, Mail, MapPin, User, Briefcase, Clock, Pencil, BarChart3, Share, Share2Icon, Bot, MessageCircle, CircleCheck, Plus, Zap, Calendar } from "lucide-react";
 import { LeadDetailContext } from "../context/LeadDetailContext";
 import { detialedLeadData } from "../../data/leads";
 
@@ -160,75 +160,88 @@ export default function LeadDetailPanel() {
                     </div>
                 </div>
 
+                {/* follow up  */}
+                <div className="flex flex-col gap-3 border border-slate-200 px-4 py-4 rounded-xl mb-4">
+                    <span className="text-sm font-bold">Follow UP</span>
+                    <button className="flex items-center gap-3 text-emerald-700 text-sm font-bold">
+                        <Calendar size={16} />
+                        <span>Set Follow Up Date</span>
+                    </button>
+                </div>
                 {/* Activities */}
-                {activities && activities.length > 0 && (
-                    <div className="relative">
-                        <button
-                            onClick={() => setShowActivities(!showActivities)}
-                            className="w-full flex items-center justify-between px-3 py-3 hover:bg-gray-50 rounded-lg transition-colors"
-                        >
-                            <div className="text-left">
-                                <p className="text-xs text-gray-500 font-medium">ACTIVITIES</p>
-                                <p className="text-sm text-gray-900 font-semibold">{activities.length} activities</p>
-                            </div>
-                            <ChevronDown
-                                size={16}
-                                className={`text-gray-400 transition-transform ${showActivities ? 'rotate-180' : ''
-                                    }`}
-                            />
-                        </button>
+                <div className="flex flex-col gap-3 border border-slate-200 px-4 p-2 rounded-xl">
+                    <div className="flex justify-between">
+                        <p className="text-sm font-semibold">Lead Summary</p>
+                        <ChevronDown
+                            size={16}
+                            className={`text-gray-400 transition-transform ${showActivities ? 'rotate-180' : ''
+                                }`}
+                        />
+                    </div>
+                    {activities && activities.length > 0 ? (
+                        <div className="relative">
+                            <button
+                                onClick={() => setShowActivities(!showActivities)}
+                                className="w-full flex items-center justify-between hover:bg-gray-50 rounded-lg transition-colors"
+                            >
+                                <div className="text-left">
+                                    <p className="text-xs text-gray-400 font-semibold">{activities.length} activities</p>
+                                </div>
 
-                        {/* Timeline Activities */}
-                        {showActivities && (
-                            <div className="mt-3">
-                                {activities.map((activity, index) => (
-                                    <div
-                                        key={activity.id}
-                                        className="relative pb-6"
-                                    >
-                                        {/* Timeline line */}
-                                        {index !== activities.length - 1 && (
-                                            <div className="absolute left-4 top-2 w-0.5 h-full bg-gray-200"></div>
-                                        )}
+                            </button>
 
-                                        {/* Timeline content */}
-                                        <div className="flex gap-3">
-                                            {/* Activity Type Icon */}
-                                            <div className={`relative pt-1 flex items-center justify-center w-8 h-8 ${getActivityColor(activity.type)} rounded-full border-2 border-white shrink-0`}>
-                                                {getActivityIcon(activity.type)}
-                                            </div>
+                            {/* Timeline Activities */}
+                            {showActivities && (
+                                <div className="mt-3">
+                                    {activities.map((activity, index) => (
+                                        <div
+                                            key={activity.id}
+                                            className="relative pb-6"
+                                        >
+                                            {/* Timeline line */}
+                                            {index !== activities.length - 1 && (
+                                                <div className="absolute left-4 top-2 w-0.5 h-full bg-gray-200"></div>
+                                            )}
 
-                                            {/* Activity details */}
-                                            <div className="flex-1 border border-slate-200 p-4 rounded-xl">
-                                                <div className="flex items-start justify-between mb-1">
-                                                    <p className="text-xs text-gray-400 font-medium">
-                                                        {activity.created_at._seconds
-                                                            ? new Date(activity.created_at._seconds * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-                                                            : 'N/A'}
-                                                    </p>
+                                            {/* Timeline content */}
+                                            <div className="flex gap-3">
+                                                {/* Activity Type Icon */}
+                                                <div className={`relative pt-1 flex items-center justify-center w-8 h-8 ${getActivityColor(activity.type)} rounded-full border-2 border-white shrink-0`}>
+                                                    {getActivityIcon(activity.type)}
                                                 </div>
-                                                <p className="text-sm font-semibold text-gray-900">
-                                                    {activity.title}
-                                                </p>
-                                                <p className="text-xs text-gray-600 mt-1">
-                                                    {activity.description}
-                                                </p>
-                                                {activity.metadata?.content && (
-                                                    <p className="text-xs text-gray-600 mt-2 whitespace-pre-wrap">
-                                                        {activity.metadata.content}
+
+                                                {/* Activity details */}
+                                                <div className="flex-1 border border-slate-200 p-4 rounded-xl">
+                                                    <div className="flex items-start justify-between mb-1">
+                                                        <p className="text-xs text-gray-400 font-medium">
+                                                            {activity.created_at._seconds
+                                                                ? new Date(activity.created_at._seconds * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                                                                : 'N/A'}
+                                                        </p>
+                                                    </div>
+                                                    <p className="text-sm font-semibold text-gray-900">
+                                                        {activity.title}
                                                     </p>
-                                                )}
-                                                <span className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded inline-block mt-2">
-                                                    {activity.type}
-                                                </span>
+                                                    <p className="text-xs text-gray-600 mt-1">
+                                                        {activity.description}
+                                                    </p>
+                                                    {activity.metadata?.content && (
+                                                        <p className="text-xs text-gray-600 mt-2 whitespace-pre-wrap">
+                                                            {activity.metadata.content}
+                                                        </p>
+                                                    )}
+                                                    <span className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded inline-block mt-2">
+                                                        {activity.type}
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                )}
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    ) : <span className="italic text-gray-400 text-xs font-semibold">No summary available</span>}
+                </div>
             </div>
         </div>
     );

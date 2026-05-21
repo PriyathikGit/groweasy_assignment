@@ -6,7 +6,7 @@ import LeadDetailPanel from "./LeadDetailPanel";
 import { LeadDetailContext } from "../context/LeadDetailContext";
 import Header from "./Header";
 
-export default function ManageLeads() {
+export default function ManageLeads({ isMobileOpen, setIsMobileOpen }) {
     const [activeFilter, setActiveFilter] = useState("Last 30 Days");
     const [activeTags, setActiveTags] = useState(["Status: Not Dialed"]);
     const { selectedLead } = useContext(LeadDetailContext)
@@ -16,7 +16,7 @@ export default function ManageLeads() {
 
     return (
         <div className="flex flex-1 flex-col">
-            <Header />
+            <Header isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
             <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
 
                 {/* Filters */}

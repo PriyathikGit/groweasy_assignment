@@ -82,7 +82,7 @@ export default function FiltersBar({ activeFilter, onFilterChange, activeTags, o
             <div className="mt-4">
                 <p className="text-xs text-gray-500 mb-1 font-semibold">Created Date Range</p>
                 <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-1.5 text-sm  w-100 justify-between">
+                    <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-1.5 text-sm  w-full md:w-100 justify-between">
                         <div className="flex items-center gap-3">
                             <Calendar size={13} className="text-gray-400" />
                             <span className="text-xs font-medium">19 Apr 2026 – 18 May 2026</span>

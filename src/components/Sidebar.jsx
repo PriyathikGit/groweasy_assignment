@@ -13,9 +13,12 @@ import {
     Building2,
     ChevronRight,
     UserPlus,
+    CircleUser,
+    Menu,
+    X,
 } from "lucide-react";
 
-import { organisationData } from "../../data/leads";
+import { organisationData, navItems, controlCenterItems } from "../../data/leads";
 import { OrgContext } from "../context/OrgContext";
 
 const iconMap = {
@@ -32,21 +35,7 @@ const iconMap = {
     table: Table2,
 };
 
-const navItems = [
-    { label: "Dashboard", icon: "dashboard" },
-    { label: "Generate Leads", icon: "rocket" },
-    { label: "Manage Leads", icon: "list", active: true },
-    { label: "Engage Leads", icon: "message" },
-];
 
-const controlCenterItems = [
-    { label: "Team Members", icon: "users2" },
-    { label: "Lead Sources", icon: "speaker" },
-    { label: "Ad Accounts", icon: "users" },
-    { label: "WhatsApp Account", icon: "chat" },
-    { label: "Tele Calling", icon: "phone" },
-    { label: "CRM Fields", icon: "table" },
-];
 
 function NavItem({ item, onClick, isActive }) {
     const Icon = iconMap[item.icon];
@@ -64,13 +53,17 @@ function NavItem({ item, onClick, isActive }) {
     );
 }
 
-export default function Sidebar() {
+export default function Sidebar({ isMobileOpen, setIsMobileOpen }) {
     const [activeItem, setActiveItem] = useState("Manage Leads");
     const [showOrgMenu, setShowOrgMenu] = useState(false);
     const { setSelectedOrgId, orgList } = useContext(OrgContext);
 
-    return (
-        <aside className="w-56 min-h-screen bg-white border-r border-gray-200 flex flex-col py-4 px-3">
+    const handleCloseMobile = () => {
+        setIsMobileOpen(false);
+    };
+
+    const sidebarContent = (
+        <>
             {/* Logo */}
             <div className="flex items-center gap-2 px-2 mb-6">
                 <div className="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center">
@@ -170,10 +163,43 @@ export default function Sidebar() {
             {/* Bottom */}
             <div className="mt-auto pt-4 border-t border-gray-100">
                 <button className="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-500 hover:text-gray-800 hover:bg-gray-50 rounded-lg transition-colors font-bold">
-                    <Building2 size={15} />
+                    <CircleUser size={15} />
                     <span>Business Center</span>
                 </button>
             </div>
-        </aside>
+        </>
+    );
+
+    return (
+        <>
+            {/* Desktop Sidebar */}
+            <aside className="hidden md:flex w-56 min-h-screen bg-white border-r border-gray-200 flex-col py-4 px-3">
+                {sidebarContent}
+            </aside>
+
+            {/* Mobile Sidebar Overlay and Drawer */}
+            {isMobileOpen && (
+                <div className="fixed inset-0 z-40 md:hidden">
+                    {/* Overlay */}
+                    <div
+                        className="absolute inset-0 bg-opacity-50"
+                        onClick={handleCloseMobile}
+                    />
+                    {/* Drawer */}
+                    <aside className="absolute left-0 top-0 h-full w-56 bg-white shadow-lg overflow-y-auto flex flex-col py-4 px-3 z-50">
+                        {/* Close Button */}
+                        <div className="flex justify-end mb-4">
+                            <button
+                                onClick={handleCloseMobile}
+                                className="p-1 hover:bg-gray-100 rounded-lg transition-colors"
+                            >
+                                <X size={24} className="text-gray-600" />
+                            </button>
+                        </div>
+                        {sidebarContent}
+                    </aside>
+                </div>
+            )}
+        </>
     );
 }
