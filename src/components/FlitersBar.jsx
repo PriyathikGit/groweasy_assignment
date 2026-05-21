@@ -22,7 +22,7 @@ function DropdownFilter({ label, options }) {
         <div className="relative">
             <button
                 onClick={() => setOpen(!open)}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-sm border border-gray-200 rounded-lg bg-white hover:bg-gray-50 text-gray-700 font-medium transition-colors"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-xs border border-gray-100 rounded-2xl bg-white hover:bg-gray-50  font-bold transition-colors "
             >
                 {label}
                 {selected.length > 0 && (
@@ -78,14 +78,16 @@ export default function FiltersBar({ activeFilter, onFilterChange, activeTags, o
             </div>
 
             {/* Date range */}
-            <div className="mt-3">
-                <p className="text-xs text-gray-500 mb-2">Created Date Range</p>
+            <div className="mt-4">
+                <p className="text-xs text-gray-700 mb-1 font-semibold">Created Date Range</p>
                 <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-1.5 text-sm text-gray-700">
-                        <Calendar size={13} className="text-gray-400" />
-                        <span>19 Apr 2026 – 18 May 2026</span>
-                        <button className="ml-1 text-gray-400 hover:text-gray-600">
-                            <X size={13} />
+                    <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-1.5 text-sm  w-100 justify-between">
+                        <div className="flex items-center gap-3">
+                            <Calendar size={13} className="text-gray-400" />
+                            <span className="text-xs font-medium">19 Apr 2026 – 18 May 2026</span>
+                        </div>
+                        <button className="ml-1 text-white  bg-green-800 rounded-xl p-1">
+                            <X size={8} />
                         </button>
                     </div>
                 </div>
@@ -97,39 +99,43 @@ export default function FiltersBar({ activeFilter, onFilterChange, activeTags, o
                             key={range}
                             onClick={() => onFilterChange(range)}
                             className={`px-3 py-1 text-xs rounded-full border transition-colors font-medium ${activeFilter === range
-                                    ? "bg-emerald-600 text-white border-emerald-600"
-                                    : "border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50"
+                                ? "bg-emerald-600 text-white border-emerald-600"
+                                : "border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50"
                                 }`}
                         >
                             {range}
                         </button>
                     ))}
-                    <button className="text-xs text-gray-400 hover:text-gray-600 flex items-center gap-1">
-                        <X size={11} />
-                        Clear Date
-                    </button>
+
                 </div>
             </div>
 
-            {/* Active tags */}
-            {activeTags.length > 0 && (
-                <div className="flex items-center gap-2 mt-3 flex-wrap">
-                    {activeTags.map((tag) => (
-                        <span
-                            key={tag}
-                            className="flex items-center gap-1 px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-xs font-medium"
-                        >
-                            {tag}
-                            <button
-                                onClick={() => onRemoveTag(tag)}
-                                className="hover:text-emerald-900 ml-0.5"
+            <div className="flex flex-col mt-4 gap-2">
+                <button className="text-xs text-gray-400 hover:text-gray-600 flex items-center gap-1 border border-slate-100 w-fit py-1 px-2 rounded-xl">
+                    <X size={11} />
+                    Clear Date
+                </button>
+                {/* Active tags */}
+                {activeTags.length > 0 && (
+                    <div className="flex items-center gap-2 flex-wrap">
+                        {activeTags.map((tag) => (
+                            <span
+                                key={tag}
+                                className="flex items-center gap-1 px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full text-xs font-medium"
                             >
-                                <X size={11} />
-                            </button>
-                        </span>
-                    ))}
-                </div>
-            )}
+                                {tag}
+                                <button
+                                    onClick={() => onRemoveTag(tag)}
+                                    className="hover:text-emerald-900 ml-0.5"
+                                >
+                                    <X size={11} />
+                                </button>
+                            </span>
+                        ))}
+                    </div>
+                )}
+            </div>
+
         </div>
     );
 }

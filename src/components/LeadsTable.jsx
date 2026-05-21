@@ -6,23 +6,35 @@ import { OrgContext } from "../context/OrgContext";
 import { LeadDetailContext } from "../context/LeadDetailContext";
 
 function LeadRow({ lead, onLeadClick }) {
+    const realDate = new Date(lead.created_at._seconds * 1000).toLocaleString()
     return (
         <tr
             className="border-b border-gray-100 hover:bg-gray-50 transition-colors group cursor-pointer"
             onClick={() => onLeadClick(lead)}
         >
             <td className="py-3 px-4">
+                <span className="text-sm font-medium text-gray-900">{lead.name}</span>
+            </td>
+            <td className="py-3 px-4">
+                <span className="text-sm text-gray-700">{lead.email}</span>
+            </td>
+            <td className="py-3 px-4">
+                <span className="text-sm text-gray-700">{lead.mobile}</span>
+            </td>
+            <td className="py-3 px-4">
+                <span className="text-sm text-gray-700">{realDate}</span>
+            </td>
+            <td className="py-3 px-4">
                 <span className="text-sm text-gray-700">{lead.company}</span>
             </td>
             <td className="py-3 px-4">
                 <StatusBadge status={lead.status} />
             </td>
+
             <td className="py-3 px-4">
                 <QualityBadge quality={lead.quality} />
             </td>
-            <td className="py-3 px-4">
-                <span className="text-sm font-medium text-gray-900">{lead.name}</span>
-            </td>
+
             <td className="py-3 px-4">
                 <button className="flex items-center gap-0.5 text-sm text-gray-500 hover:text-emerald-600 font-medium transition-colors group-hover:text-emerald-600">
                     More
@@ -34,14 +46,13 @@ function LeadRow({ lead, onLeadClick }) {
 }
 
 const columns = [
+    { key: "lead_name", label: "Lead Name" },
+    { key: "email", label: "Email" },
+    { key: "contact", label: "Contact" },
+    { key: "date_created", label: "Date Created" },
     { key: "company", label: "Company" },
     { key: "status", label: "Status" },
     { key: "quality", label: "Quality" },
-    { key: "name", label: "Lead Owner" },
-    { key: "source", label: "SOURCE" },
-    { key: "call_status_today", label: "CALL STATUS TODAY" },
-    { key: "next_follow_up", label: "NEXT FOLLOW UP" },
-    { key: "acquistion_source", label: "ACQUISTION_SOURCE" },
     { key: "actions", label: "Actions" },
 ];
 
@@ -68,8 +79,8 @@ export default function LeadsTable() {
         <div className={`${selectedLead ? 'max-w-180' : ''}  rounded-xl overflow-hidden`}>
 
             {/* Table header bar */}
-            <div className="flex items-center justify-between px-4 py-3">
-                <h2 className="text-sm font-semibold text-gray-800">Your Leads</h2>
+            <div className="flex items-center justify-between  py-3">
+                <h2 className="text-md font-semibold text-gray-800">Your Leads</h2>
                 <div className="flex items-center gap-2">
                     <div className="relative">
                         <Search
@@ -98,7 +109,7 @@ export default function LeadsTable() {
                             {columns.map((col) => (
                                 <th
                                     key={col.key}
-                                    className="text-left px-4 py-2.5 text-xs font-semibold text-gray-500 uppercase tracking-wider whitespace-nowrap"
+                                    className="text-left px-4 py-2.5 text-xs font-semibold  uppercase tracking-wider whitespace-nowrap"
                                 >
                                     {col.label}
                                 </th>
