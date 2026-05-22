@@ -17,7 +17,7 @@ export default function ManageLeads({ isMobileOpen, setIsMobileOpen }) {
     return (
         <div className="flex flex-1 flex-col">
             <Header isMobileOpen={isMobileOpen} setIsMobileOpen={setIsMobileOpen} />
-            <main className="flex-1 overflow-y-auto bg-gray-50 p-6">
+            <main className="flex-1 overflow-y-auto bg-gray-50 p-3 sm:p-4 md:p-6">
 
                 {/* Filters */}
                 <FiltersBar
@@ -31,15 +31,13 @@ export default function ManageLeads({ isMobileOpen, setIsMobileOpen }) {
                 <PerformanceOverview />
 
                 {/* Leads table */}
-                <div className={`${selectedLead ? 'flex gap-4 h-125' : ''}`}>
-                    <div className="flex-1 overflow-hidden">
+                <div className={`${selectedLead ? 'flex flex-col lg:flex-row gap-4 h-125' : ''}`}>
+                    <div className="flex-1 overflow-hidden min-w-0">
                         <LeadsTable />
                     </div>
-                    {selectedLead && <LeadDetailPanel />}
+                    {selectedLead && <div className="w-full lg:w-104 shrink-0"><LeadDetailPanel /></div>}
                 </div>
             </main>
-
-            {/* Lead Detail Panel */}
         </div>
     );
 }

@@ -18,7 +18,7 @@ import {
     X,
 } from "lucide-react";
 
-import { organisationData, navItems, controlCenterItems } from "../../data/leads";
+import { organisationData } from "../../data/leads";
 import { OrgContext } from "../context/OrgContext";
 
 const iconMap = {
@@ -35,6 +35,21 @@ const iconMap = {
     table: Table2,
 };
 
+export const navItems = [
+    { label: 'Dashboard', icon: 'dashboard' },
+    { label: 'Generate Leads', icon: 'rocket' },
+    { label: 'Manage Leads', icon: 'list', active: true },
+    { label: 'Engage Leads', icon: 'message' },
+];
+
+export const controlCenterItems = [
+    { label: 'Team Members', icon: 'users2' },
+    { label: 'Lead Sources', icon: 'speaker' },
+    { label: 'Ad Accounts', icon: 'users' },
+    { label: 'WhatsApp Account', icon: 'chat' },
+    { label: 'Tele Calling', icon: 'phone' },
+    { label: 'CRM Fields', icon: 'table' },
+];
 
 
 function NavItem({ item, onClick, isActive }) {

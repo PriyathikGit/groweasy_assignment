@@ -12,6 +12,7 @@ export const leadsData = [
     country_code: '+91',
     mobile_without_country_code: '7071077777',
     company: 'Cartoon md',
+    leadStatus: 'Good Lead',
     location: {},
     custom_fields: {
       acquisition_source: 'web',
@@ -47,7 +48,7 @@ export const leadsData = [
     country_code: '+91',
     mobile_without_country_code: '7011888888',
     company: 'Video ',
-    status: 'Bad lead',
+    leadStatus: 'Bad Lead',
     location: {},
     custom_fields: {
       acquisition_source: 'web',
@@ -81,6 +82,7 @@ export const leadsData = [
     email: 'arushi22013@ncuindia.edu',
     mobile: '+9100',
     company: 'Nazztec',
+    leadStatus: 'Bad Lead',
     location: {},
     custom_fields: {
       acquisition_source: 'web',
@@ -99,7 +101,6 @@ export const leadsData = [
     id: 'pbDpswyMvawh4CDqwxZC',
     owner_uid: 'HZnjtnP2t7OtBOorXx2gLyTzLBy2',
   },
-  // Test Corp Org
   {
     org_id: 'Sb9JUEJHd7ZjmhYLYBrh',
     source: {
@@ -113,6 +114,7 @@ export const leadsData = [
     country_code: '+1',
     mobile_without_country_code: '6505551234',
     company: 'Tech Solutions Inc',
+    leadStatus: 'Good Lead',
     location: {},
     custom_fields: {
       acquisition_source: 'web',
@@ -148,6 +150,7 @@ export const leadsData = [
     country_code: '+1',
     mobile_without_country_code: '6505559876',
     company: 'Digital Marketing Group',
+    leadStatus: 'Bad Lead',
     location: {},
     custom_fields: {
       acquisition_source: 'email',
@@ -179,6 +182,7 @@ export const leadsData = [
     country_code: '+1',
     mobile_without_country_code: '6505554321',
     company: 'Enterprise Solutions',
+    leadStatus: 'Good Lead',
     location: {},
     custom_fields: {
       acquisition_source: 'referral',
@@ -197,7 +201,6 @@ export const leadsData = [
       status: null,
     },
   },
-  // VK Test Org
   {
     org_id: 'mUvc2OtNbJ9bo1K2hyVu',
     source: {
@@ -211,6 +214,7 @@ export const leadsData = [
     country_code: '+91',
     mobile_without_country_code: '9876543210',
     company: 'Startup Ventures',
+    leadStatus: 'Good Lead',
     location: {},
     custom_fields: {
       acquisition_source: 'web',
@@ -246,6 +250,7 @@ export const leadsData = [
     country_code: '+91',
     mobile_without_country_code: '9123456789',
     company: 'Innovation Labs',
+    leadStatus: 'Bad Lead',
     location: {},
     custom_fields: {
       acquisition_source: 'social',
@@ -277,6 +282,7 @@ export const leadsData = [
     country_code: '+91',
     mobile_without_country_code: '9234567890',
     company: 'Tech Consultants',
+    leadStatus: 'Good Lead',
     location: {},
     custom_fields: {
       acquisition_source: 'web',
@@ -295,7 +301,6 @@ export const leadsData = [
       status: null,
     },
   },
-  // Sales AI Org
   {
     org_id: 'nkOUqTl7Cwrq7mJnkMSg',
     source: {
@@ -309,6 +314,7 @@ export const leadsData = [
     country_code: '+44',
     mobile_without_country_code: '1234567890',
     company: 'Global Commerce Ltd',
+    leadStatus: 'Good Lead',
     location: {},
     custom_fields: {
       acquisition_source: 'web',
@@ -344,6 +350,7 @@ export const leadsData = [
     country_code: '+44',
     mobile_without_country_code: '2134567890',
     company: 'Marketing Pros',
+    leadStatus: 'Bad Lead',
     location: {},
     custom_fields: {
       acquisition_source: 'email',
@@ -375,6 +382,7 @@ export const leadsData = [
     country_code: '+44',
     mobile_without_country_code: '3234567890',
     company: 'Sales Force Inc',
+    leadStatus: 'Good Lead',
     location: {},
     custom_fields: {
       acquisition_source: 'referral',
@@ -406,6 +414,7 @@ export const leadsData = [
     country_code: '+44',
     mobile_without_country_code: '3334567890',
     company: 'Digital Agency',
+    leadStatus: 'Bad Lead',
     location: {},
     custom_fields: {
       acquisition_source: 'web',
@@ -494,10 +503,6 @@ export const organisationData = [
   },
 ];
 
-// export const detialedLeadData = [
-
-// ];
-
 export const detialedLeadData = [
   {
     lead: {
@@ -506,7 +511,7 @@ export const detialedLeadData = [
         type: 'WEBSITE',
       },
       name: 'Mohd Zaid',
-      status: 'Bad lead',
+      leadStatus: 'Bad Lead',
       first_name: 'Mohd',
       last_name: 'Zaid',
       email: 'mohdzaid735@gmail.com',
@@ -630,13 +635,12 @@ export const detialedLeadData = [
       },
     ],
   },
-  // Ayan Shah - Empty activities
   {
     lead: {
       org_id: 'ZqxylZwSJdq4u08LwZbV',
       source: { type: 'WEBSITE' },
       name: 'Ayan Shah',
-      status: 'Not Dialed',
+      leadStatus: 'Good Lead',
       first_name: 'Ayan',
       last_name: 'Shah',
       email: 'ayanshah10@gmail.com',
@@ -657,13 +661,12 @@ export const detialedLeadData = [
     },
     activities: [],
   },
-  // Mohd Zaid - With activities
   {
     lead: {
       org_id: 'ZqxylZwSJdq4u08LwZbV',
       source: { type: 'WEBSITE' },
       name: 'Mohd Zaid',
-      status: 'Bad lead',
+      leadStatus: 'Bad Lead',
       first_name: 'Mohd',
       last_name: 'Zaid',
       email: 'mohdzaid70118@gmail.com',
@@ -729,13 +732,12 @@ export const detialedLeadData = [
       },
     ],
   },
-  // arushi 22013 - Empty activities
   {
     lead: {
       org_id: 'ZqxylZwSJdq4u08LwZbV',
       source: { type: 'WEBHOOK' },
       name: 'arushi 22013',
-      status: 'Not Dialed',
+      leadStatus: 'Not Dialed',
       first_name: 'arushi',
       last_name: '22mba013',
       email: 'arushi22013@ncuindia.edu',
@@ -751,13 +753,12 @@ export const detialedLeadData = [
     },
     activities: [],
   },
-  // John Smith - With activities
   {
     lead: {
       org_id: 'Sb9JUEJHd7ZjmhYLYBrh',
       source: { type: 'WEBSITE' },
       name: 'John Smith',
-      status: 'Dialed',
+      leadStatus: 'Good Lead',
       first_name: 'John',
       last_name: 'Smith',
       email: 'john.smith@testcorp.com',
@@ -805,13 +806,12 @@ export const detialedLeadData = [
       },
     ],
   },
-  // Sarah Johnson - Empty activities
   {
     lead: {
       org_id: 'Sb9JUEJHd7ZjmhYLYBrh',
       source: { type: 'WEBSITE' },
       name: 'Sarah Johnson',
-      status: 'Not Dialed',
+      leadStatus: 'Bad Lead',
       first_name: 'Sarah',
       last_name: 'Johnson',
       email: 'sarah.johnson@testcorp.com',
@@ -829,13 +829,12 @@ export const detialedLeadData = [
     },
     activities: [],
   },
-  // Mike Davis - With activities
   {
     lead: {
       org_id: 'Sb9JUEJHd7ZjmhYLYBrh',
       source: { type: 'WEBHOOK' },
       name: 'Mike Davis',
-      status: 'Follow Up',
+      leadStatus: 'Good Lead',
       first_name: 'Mike',
       last_name: 'Davis',
       email: 'mike.davis@testcorp.com',
@@ -885,13 +884,12 @@ export const detialedLeadData = [
       },
     ],
   },
-  // Priya Sharma - With activities
   {
     lead: {
       org_id: 'mUvc2OtNbJ9bo1K2hyVu',
       source: { type: 'WEBSITE' },
       name: 'Priya Sharma',
-      status: 'Dialed',
+      leadStatus: 'Good Lead',
       first_name: 'Priya',
       last_name: 'Sharma',
       email: 'priya.sharma@vktest.com',
@@ -952,13 +950,12 @@ export const detialedLeadData = [
       },
     ],
   },
-  // Raj Patel - Empty activities
   {
     lead: {
       org_id: 'mUvc2OtNbJ9bo1K2hyVu',
       source: { type: 'WEBSITE' },
       name: 'Raj Patel',
-      status: 'Not Dialed',
+      leadStatus: 'Bad Lead',
       first_name: 'Raj',
       last_name: 'Patel',
       email: 'raj.patel@vktest.com',
@@ -976,13 +973,12 @@ export const detialedLeadData = [
     },
     activities: [],
   },
-  // Anjali Gupta - With activities
   {
     lead: {
       org_id: 'mUvc2OtNbJ9bo1K2hyVu',
       source: { type: 'WEBHOOK' },
       name: 'Anjali Gupta',
-      status: 'Converted',
+      leadStatus: 'Good Lead',
       first_name: 'Anjali',
       last_name: 'Gupta',
       email: 'anjali.gupta@vktest.com',
@@ -1056,13 +1052,12 @@ export const detialedLeadData = [
       },
     ],
   },
-  // Alex Morgan - With activities
   {
     lead: {
       org_id: 'nkOUqTl7Cwrq7mJnkMSg',
       source: { type: 'WEBSITE' },
       name: 'Alex Morgan',
-      status: 'Follow Up',
+      leadStatus: 'Good Lead',
       first_name: 'Alex',
       last_name: 'Morgan',
       email: 'alex.morgan@salesai.com',
@@ -1127,13 +1122,12 @@ export const detialedLeadData = [
       },
     ],
   },
-  // Emma Wilson - Empty activities
   {
     lead: {
       org_id: 'nkOUqTl7Cwrq7mJnkMSg',
       source: { type: 'WEBSITE' },
       name: 'Emma Wilson',
-      status: 'Not Dialed',
+      leadStatus: 'Bad Lead',
       first_name: 'Emma',
       last_name: 'Wilson',
       email: 'emma.wilson@salesai.com',
@@ -1151,13 +1145,12 @@ export const detialedLeadData = [
     },
     activities: [],
   },
-  // Oliver Brown - With activities
   {
     lead: {
       org_id: 'nkOUqTl7Cwrq7mJnkMSg',
       source: { type: 'WEBHOOK' },
       name: 'Oliver Brown',
-      status: 'Dialed',
+      leadStatus: 'Good Lead',
       first_name: 'Oliver',
       last_name: 'Brown',
       email: 'oliver.brown@salesai.com',
@@ -1201,13 +1194,12 @@ export const detialedLeadData = [
       },
     ],
   },
-  // Sophie Lee - Empty activities
   {
     lead: {
       org_id: 'nkOUqTl7Cwrq7mJnkMSg',
       source: { type: 'WEBSITE' },
       name: 'Sophie Lee',
-      status: 'Not Dialed',
+      leadStatus: 'Bad Lead',
       first_name: 'Sophie',
       last_name: 'Lee',
       email: 'sophie.lee@salesai.com',
@@ -1225,20 +1217,4 @@ export const detialedLeadData = [
     },
     activities: [],
   },
-];
-
-export const navItems = [
-  { label: 'Dashboard', icon: 'dashboard' },
-  { label: 'Generate Leads', icon: 'rocket' },
-  { label: 'Manage Leads', icon: 'list', active: true },
-  { label: 'Engage Leads', icon: 'message' },
-];
-
-export const controlCenterItems = [
-  { label: 'Team Members', icon: 'users2' },
-  { label: 'Lead Sources', icon: 'speaker' },
-  { label: 'Ad Accounts', icon: 'users' },
-  { label: 'WhatsApp Account', icon: 'chat' },
-  { label: 'Tele Calling', icon: 'phone' },
-  { label: 'CRM Fields', icon: 'table' },
 ];
