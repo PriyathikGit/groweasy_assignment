@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, X, Calendar, RotateCcw } from "lucide-react";
+import { ChevronDown, X, Calendar, RotateCcw, RefreshCcw } from "lucide-react";
 
 const dateRanges = ["Today", "Last 7 Days", "Last 30 Days", "Last 2 Months"];
 
@@ -70,9 +70,9 @@ export default function FiltersBar({ activeFilter, onFilterChange, activeTags, o
                 <DropdownFilter label="Quality" options={qualityOptions} />
                 <DropdownFilter label="Source" options={sourceOptions} />
                 <DropdownFilter label="Owner" options={ownerOptions} />
-                <div className="ml-auto">
-                    <button className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700">
-                        <RotateCcw size={13} />
+                <div className="md:ml-auto border border-slate-200 rounded-xl px-2 py-1">
+                    <button className="flex items-center gap-1 text-sm font-semibold text-gray-500 hover:text-gray-700">
+                        <RefreshCcw size={13} />
                         Clear All
                     </button>
                 </div>
@@ -82,7 +82,7 @@ export default function FiltersBar({ activeFilter, onFilterChange, activeTags, o
             <div className="mt-4">
                 <p className="text-xs text-gray-500 mb-1 font-semibold">Created Date Range</p>
                 <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-3 py-1.5 text-sm  w-full md:w-100 justify-between">
+                    <div className="flex items-center gap-2 border border-gray-200 rounded-lg px-1 py-1.5 text-sm  w-full md:w-100 justify-between">
                         <div className="flex items-center gap-3">
                             <Calendar size={13} className="text-gray-400" />
                             <span className="text-xs font-medium">19 Apr 2026 – 18 May 2026</span>

@@ -106,7 +106,7 @@ export default function Sidebar({ isMobileOpen, setIsMobileOpen }) {
                     <div className="flex-1 min-w-0">
                         {orgList.slice(0, 1).map((item) => (
                             <div key={item.name}>
-                                <p className="text-xs font-bold text-gray-900 truncate">{item.name}</p>
+                                <p className="text-sm font-bold text-gray-900 truncate">{item.name}</p>
                                 <p className="text-[10px] text-gray-400 uppercase tracking-wider">{item.role}</p>
                             </div>
                         ))}

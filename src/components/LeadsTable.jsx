@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Search, RefreshCw, ChevronRight, MoreHorizontal, Calendar, X } from "lucide-react";
 import { StatusBadge, QualityBadge } from "./Badges";
 import { leadsData } from "../../data/leads";
@@ -142,8 +142,20 @@ export default function LeadsTable() {
     const [searchQuery, setSearchQuery] = useState("");
     const [showFollowUpModal, setShowFollowUpModal] = useState(false);
     const [selectedFollowUpLead, setSelectedFollowUpLead] = useState(null);
+    const [isZoom100, setIsZoom100] = useState(true);
     const { selectedOrgId } = useContext(OrgContext);
     const { selectedLead, setSelectedLead } = useContext(LeadDetailContext);
+
+    useEffect(() => {
+        const checkZoom = () => {
+            const zoomLevel = window.outerWidth / window.innerWidth;
+            setIsZoom100(Math.abs(zoomLevel - 1) < 0.01);
+        };
+
+        checkZoom();
+        window.addEventListener('resize', checkZoom);
+        return () => window.removeEventListener('resize', checkZoom);
+    }, []);
 
     const debouncedQuery = useDebounce(searchQuery, 300)
 
@@ -162,24 +174,27 @@ export default function LeadsTable() {
     });
 
     return (
-        <div className={`${selectedLead ? 'w-5xl' : ''}  rounded-xl overflow-hidden`}>
+        <div className={`${selectedLead ? (isZoom100 ? 'w-4xl' : 'w-full') : ''}  rounded-xl overflow-hidden`}>
 
             {/* Table header bar */}
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 py-3">
-                <h2 className="text-md font-semibold text-gray-800">Your Leads</h2>
+                <h2 className="text-md font-bold">Your Leads</h2>
                 <div className="flex items-center gap-2">
-                    <div className="relative flex-1 sm:flex-none">
-                        <Search
-                            size={14}
-                            className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400"
-                        />
+                    <div className="relative flex-1 sm:flex-none flex items-center">
+
                         <input
                             type="text"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder="Enter email or phone number..."
-                            className="text-sm pl-8 pr-3 py-1.5 border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent w-full sm:w-56 placeholder:text-gray-400"
+                            className="text-sm p-2 py-2 border border-gray-200 rounded-l-lg bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent w-full sm:w-88 placeholder:text-gray-400"
                         />
+                        <div className="bg-emerald-800 py-3 px-3 rounded-r-lg">
+                            <Search
+                                size={14}
+                                className="text-white"
+                            />
+                        </div>
                     </div>
                     <button className="w-8 h-8 flex items-center justify-center border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors shrink-0">
                         <RefreshCw size={14} className="text-gray-500" />
@@ -192,7 +207,7 @@ export default function LeadsTable() {
                 leadName={selectedFollowUpLead?.name}
             />
             {/* Table */}
-            <div className="overflow-x-auto border rounded-xl border-slate-200">
+            <div className="overflow-x-auto border rounded-xl border-slate-200 shadow-lg">
                 <table className="w-full">
                     <thead>
                         <tr className="bg-gray-50 border-b border-gray-100">

@@ -67,9 +67,9 @@ export default function LeadDetailPanel() {
                     }`}
                 onClick={() => setSelectedLead(null)}
             />
-            <div className={`fixed md:relative bottom-0 right-0 md:right-auto md:bottom-auto w-full md:w-full h-3/4 md:h-full bg-white border-l border-gray-200 overflow-y-auto flex flex-col rounded-t-xl md:rounded-xl z-40 md:z-auto transform transition-all duration-500 ease-out ${isAnimating
-                    ? 'translate-y-0 translate-x-0 opacity-100 md:translate-x-0'
-                    : 'translate-y-full md:translate-x-full opacity-0'
+            <div className={`fixed md:relative bottom-0 right-0 md:right-auto md:bottom-auto w-full md:w-100 h-3/4 md:h-full bg-white border-l border-gray-200 overflow-y-auto flex flex-col rounded-t-xl md:rounded-xl z-40 md:z-auto transform transition-all duration-500 ease-out ${isAnimating
+                ? 'translate-y-0 translate-x-0 opacity-100 md:translate-x-0'
+                : 'translate-y-full md:translate-x-full opacity-0'
                 }`}>
 
                 {/* mobile  */}

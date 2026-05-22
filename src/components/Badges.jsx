@@ -24,7 +24,7 @@ export function StatusBadge({ status }) {
 export function QualityBadge({ quality }) {
     if (!quality) {
         return (
-            <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-gray-100 text-gray-400 text-sm">
+            <span className="inline-flex items-center justify-center w-7 h-6 rounded-xl bg-gray-100 text-gray-400 text-sm font-extrabold">
                 —
             </span>
         );

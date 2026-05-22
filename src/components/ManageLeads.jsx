@@ -35,7 +35,7 @@ export default function ManageLeads({ isMobileOpen, setIsMobileOpen }) {
                     <div className="flex-1 overflow-hidden min-w-0">
                         <LeadsTable />
                     </div>
-                    {selectedLead && <div className="w-full lg:w-104 shrink-0"><LeadDetailPanel /></div>}
+                    {selectedLead && <div className="w-full lg:w-fit shrink-0"><LeadDetailPanel /></div>}
                 </div>
             </main>
         </div>
