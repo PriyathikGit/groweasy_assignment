@@ -1,9 +1,9 @@
 import { Users, Phone, Target, TrendingUp } from "lucide-react";
-
+import {leadsData} from "../../data/leads"
 const stats = [
     {
         label: "Total Leads",
-        value: "45",
+        value: leadsData.length,
         icon: Users
     },
     {
